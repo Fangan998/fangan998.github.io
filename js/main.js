@@ -38,5 +38,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Load the navigation and the default page (home.html)
     loadNav();
-    loadPage('home.html');
+    loadPage('./pages/home.html');
 });
