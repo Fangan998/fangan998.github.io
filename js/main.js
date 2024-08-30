@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
                         const page = this.getAttribute('data-page');
-                        loadPage(page);
+                        if (page) {
+                            loadPage(page);
+                        }
                     });
                 });
             })
