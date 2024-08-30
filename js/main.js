@@ -17,10 +17,21 @@ document.addEventListener("DOMContentLoaded", function() {
                         const page = this.getAttribute('data-page');
                         if (page) {
                             loadPage(page);
-                        }
+                        }                         
+                        
                     });
                 });
+
+                 // Add event listener to the navbar brand
+                 const navbarBrand = document.querySelector('.navbar-brand');
+                 navbarBrand.addEventListener('click', function(e) {
+                     e.preventDefault();
+                     loadPage('home.html');
+                 });
+                 
             })
+
+            
             .catch(error => {
                 navPlaceholder.innerHTML = "<p>Sorry, the navigation could not be loaded.</p>";
             });
@@ -36,6 +47,18 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(error => {
                 content.innerHTML = "<p>Sorry, the page could not be loaded.</p>";
             });
+    }
+
+     // Function to handle 404 errors
+     function handle404Error() {
+        content.innerHTML = `
+            <h1>404 - Page Not Found</h1>
+            <p>Sorry, the page you're looking for doesn't exist.</p>
+            <p>You will be redirected to the home page in 5 seconds...</p>
+        `;
+        setTimeout(() => {
+            loadPage('home.html');
+        }, 5000);
     }
 
     // Load the navigation and the default page (home.html)
